@@ -1,0 +1,31 @@
+
+./bootloader/target/boot.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <init>:
+   0:	be 00 00 b4 0e       	mov    $0xeb40000,%esi
+
+0000000000000005 <print_char>:
+   5:	ac                   	lods   %ds:(%rsi),%al
+   6:	3c 00                	cmp    $0x0,%al
+   8:	74 04                	je     e <done>
+   a:	cd 10                	int    $0x10
+   c:	eb f7                	jmp    5 <print_char>
+
+000000000000000e <done>:
+   e:	f4                   	hlt    
+
+000000000000000f <msg>:
+   f:	48                   	rex.W
+  10:	65 6c                	gs insb (%dx),%es:(%rdi)
+  12:	6c                   	insb   (%dx),%es:(%rdi)
+  13:	6f                   	outsl  %ds:(%rsi),(%dx)
+  14:	20 77 6f             	and    %dh,0x6f(%rdi)
+  17:	72 6c                	jb     85 <msg+0x76>
+  19:	64 21 00             	and    %eax,%fs:(%rax)
+	...
+ 1fc:	00 00                	add    %al,(%rax)
+ 1fe:	55                   	push   %rbp
+ 1ff:	aa                   	stos   %al,%es:(%rdi)
