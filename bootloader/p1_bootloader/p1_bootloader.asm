@@ -12,8 +12,8 @@ boot:										; the boot function/label
 	ret
 	; jmp		$								; end boot cycle
 
-%include	"bootloader/print.asm"
-%include	"bootloader/disk.asm"
+%include	"bootloader/utilities/print.asm"
+%include	"bootloader/utilities/disk.asm"
 
 string1:		db "Loading Phase-2-Bootloader.....1", 0Ah, 0Dh, 0
 string2:		db "Loaded Phase-2-Bootloader1", 0Ah, 0Dh, 0

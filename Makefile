@@ -7,11 +7,11 @@ os-vdmk: bootloader/target/os.bin
 hobby_os: 
 	cargo build --target x86-64.json
 
-bootloader/target/os.bin: bootloader/target/boot.bin bootloader/target/p2boot.bin
-	cat ./bootloader/target/boot.bin ./bootloader/target/p2boot.bin > bootloader/target/os.bin
+bootloader/target/os.bin: bootloader/target/p1_bootloader.bin bootloader/target/p2_bootloader.bin
+	cat ./bootloader/target/p1_bootloader.bin ./bootloader/target/p2_bootloader.bin > bootloader/target/os.bin
 
-bootloader/target/boot.bin:
-	nasm -o ./bootloader/target/boot.bin ./bootloader/boot.asm
+bootloader/target/p1_bootloader.bin:
+	nasm -o ./bootloader/target/p1_bootloader.bin ./bootloader/p1_bootloader/p1_bootloader.asm
 
-bootloader/target/p2boot.bin:
-	nasm -o ./bootloader/target/p2boot.bin ./bootloader/p2boot.asm
+bootloader/target/p2_bootloader.bin:
+	nasm -o ./bootloader/target/p2_bootloader.bin ./bootloader/p2_bootloader/p2_bootloader.asm

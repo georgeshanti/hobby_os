@@ -6,7 +6,7 @@ boot:										; the boot function/label
 	call	print							; print string onto screen
 	jmp		$								; end boot cycle
 
-%include	"bootloader/print.asm"
+%include	"bootloader/utilities/print.asm"
 
 string1:		db "Running Phase-2-Bootloader.....", 0Ah, 0Dh, 0
 
